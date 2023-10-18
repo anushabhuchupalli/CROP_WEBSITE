@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartCrop: Intelligent Crop Recommendation</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZmFybXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80') center/cover no-repeat;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            text-align: center;
+            color: #fff;
+            padding: 50px 0;
+            margin-top: 0;
+        }
+
+        form {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            border-radius: 10px;
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            color: #fff;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 50%;
+            padding: 10px;
+            background: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        .results {
+            color: white;
+            margin-top: 20px;
+        }
+
+        h2 {
+            font-size: 24px;
+        }
+
+        p {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>SmartCrop: Crop Recommendation System 🌱</h1>
+        
+        <form method="POST" action="/predict">
+            <label for="nitrogen">Nitrogen:</label>
+            <input type="number" name="nitrogen" step="0.01" required>
+
+            <label for="phosphorus">Phosphorus:</label>
+            <input type="number" name="phosphorus" step="0.01" required>
+
+            <label for="potassium">Potassium:</label>
+            <input type="number" name="potassium" step="0.01" required>
+
+            <label for="temperature">Temperature:</label>
+            <input type="number" name="temperature" step="0.01" required>
+
+            <label for="humidity">Humidity:</label>
+            <input type="number" name="humidity" step="0.01" required>
+
+            <label for="ph">Ph:</label>
+            <input type="number" name="ph" step="0.01" required>
+
+            <label for="rainfall">Rainfall:</label>
+            <input type="number" name="rainfall" step="0.01" required>
+
+            <button type="submit">Predict</button>
+        </form>
+        {% if prediction %}
+        <div class="results">
+            <h2>Results 🔍</h2>
+            <p>{{ prediction|e }} are recommended by the A.I for your farm.</p>
+        </div>
+    {% endif %}
+
+        
+</body>
+</html>
